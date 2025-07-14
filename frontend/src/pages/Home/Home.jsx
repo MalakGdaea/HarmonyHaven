@@ -1,0 +1,33 @@
+import styles from './Home.module.css';
+import { images } from '../../assets/';
+import Title from '../../components/Title/Title.jsx';
+import { featuredProducts } from '../../mockdata.js';
+import ProductsList from '../../components/ProductsList/ProductsList.jsx';
+import SubNavBar from '../../components/SubNavBar/SubNavBar.jsx';
+
+function Home() {
+
+    return (
+        <div className={styles.homeContainer}>
+            <header className={styles.landingHeader}>
+                <SubNavBar />
+                <div className={styles.overlay}></div>
+                <img src={images.landingImage} className={styles.landingImage} alt="Harmony House" />
+                <div className={styles.introContainer}>
+                    <div className={styles.introText}>
+                        <h2>Welcome to Harmony Haven</h2>
+                        <p className='secondaryText'>Whether you're a seasoned performer or just starting your musical journey, Harmony Haven offers a curated collection of high-quality instruments to inspire every note.</p>
+                    </div>
+                </div>
+            </header>
+            <main className={styles.mainContent}>
+                <section className={styles.featuredInstruments}>
+                    <Title text="Featured Instruments" />
+                    <ProductsList products={featuredProducts} />
+                </section>
+            </main>
+        </div>
+    );
+}
+
+export default Home;

@@ -1,0 +1,39 @@
+.navContainer {
+    background-color: #000000;
+    align-items: center;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    
+}
+
+.navList {
+    display: flex;
+    gap:35px;
+    width: fit-content;
+    align-items: center;
+    list-style-type: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navList a {
+    font-size: 0.9rem;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.cart {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
