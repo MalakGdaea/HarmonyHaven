@@ -10,8 +10,12 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" Component={Home} />
-        <Route path="/about" element={<h1>About Page</h1>} />
-        <Route path="/contact" element={<h1>Contact Page</h1>} />
+        <Route path="/pianos" element={<h1>Piano category</h1>} />
+        <Route path="/guitars" element={<h1>Guitar category</h1>} />
+        <Route path="/drums" element={<h1>Drum category</h1>} />
+        <Route path="/keyboards" element={<h1>Keyboards category</h1>} />
+        <Route path="/saxophones" element={<h1>Saxophones category</h1>} />
+        <Route path="/trumpets" element={<h1>Trumpets category</h1>} />
         <Route path="/checkout" element={<h1>Checkout</h1>} />
       </Routes>
     </Router>

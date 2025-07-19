@@ -1,22 +1,25 @@
 import styles from './SubNavBar.module.css';
 import { NavLink } from 'react-router-dom';
 import { motion } from "framer-motion";
+import { appear } from '../../motions';
 
 function SubNavBar() {
     return (
-        <motion.nav className={styles.subNavBar}
-            initial={{ height: "100%", opacity: 1 }}
-            animate={{ height: "auto", opacity: 0.8 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}>
-            <ul className={styles.navList}>
-                <li><NavLink to="#home">Pianos</NavLink></li>
-                <li><NavLink to="#about">Guitars</NavLink></li>
-                <li><NavLink to="#services">Drums</NavLink></li>
-                <li><NavLink to="#contact">Keyboards</NavLink></li>
-                <li><NavLink to="#contact">Saxophones</NavLink></li>
-                <li><NavLink to="#contact">Trumpets</NavLink></li>
-            </ul>
-        </motion.nav>
+        <nav className={styles.subNavBar}>
+            <motion.ul
+                initial="hidden"
+                animate="visible"
+                variants={appear}
+                transition={{ duration: 0.5, delay: 2 }}
+                className={styles.navList}>
+                <li><NavLink className={styles.link} >Pianos</NavLink></li>
+                <li><NavLink className={styles.link} >Guitars</NavLink></li>
+                <li><NavLink className={styles.link} >Drums</NavLink></li>
+                <li><NavLink className={styles.link} >Keyboards</NavLink></li>
+                <li><NavLink className={styles.link}>Saxophones</NavLink></li>
+                <li><NavLink className={styles.link} >Trumpets</NavLink></li>
+            </motion.ul>
+        </nav>
     );
 }
 

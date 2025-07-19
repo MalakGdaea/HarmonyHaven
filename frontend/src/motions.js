@@ -10,3 +10,8 @@ export const staggerContainer = {
         },
     },
 };
+
+export const appear = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+}

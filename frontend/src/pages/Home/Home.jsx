@@ -16,7 +16,7 @@ function Home() {
                 <div className={styles.introContainer}>
                     <div className={styles.introText}>
                         <h2>Welcome to Harmony Haven</h2>
-                        <p className='secondaryText'>Whether you're a seasoned performer or just starting your musical journey, Harmony Haven offers a curated collection of high-quality instruments to inspire every note.</p>
+                        <p className='secondaryText'>Harmony Haven offers a curated collection of high-quality instruments to inspire every note.</p>
                     </div>
                 </div>
             </header>
