@@ -1,0 +1,60 @@
+.categoryContainer {
+  margin: 2rem 0;
+  border-radius: 12px;
+}
+
+.contentWrapper {
+  display: flex;
+  gap: 2rem;
+}
+
+.imagesContainer {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.categoryImage{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.productsWrapper {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 50%;
+
+}
+
+.description {
+  font-size: 1rem;
+  color: #f8f8f8;
+  position: absolute;
+  bottom: 2px;
+  left: 10px;
+}
+
+.button {
+  align-self: start;
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #555;
+}
