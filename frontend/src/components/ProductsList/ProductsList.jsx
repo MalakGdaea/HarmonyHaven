@@ -11,7 +11,7 @@ function ProductsList({ products }) {
             viewport={{ once: true, amount: 0.2 }}
             variants={staggerContainer}>
             {products.map((product) => (
-                <FeaturedProduct key={product.id} product={product} />
+                <FeaturedProduct key={product._id} product={product} />
             ))}
         </motion.div>
     );
