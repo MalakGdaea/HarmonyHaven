@@ -11,7 +11,8 @@ function Category({ category }) {
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const response = await getProductsByCategory(category._id, 6);
+                const PRODUCTS_PER_CATEGORY = 4;
+                const response = await getProductsByCategory(category._id, PRODUCTS_PER_CATEGORY);
                 setProducts(response);
             } catch (error) {
                 console.error('Failed to fetch products:', error);
@@ -34,7 +35,7 @@ function Category({ category }) {
                     {isLoading ? (
                         <p>Loading products...</p>
                     ) : products && products.length > 0 ? (
-                        products.map(product => <ProductCard key={product.id} product={product} />)
+                        products.map(product => <ProductCard key={product._id} product={product} />)
                     ) : (
                         <p>No products available in this category.</p>
                     )}

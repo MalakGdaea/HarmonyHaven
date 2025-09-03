@@ -10,13 +10,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: clamp(0.875rem, 1.5vw, 1.25rem);
 }
+
 
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   color: black;
+  background-color: #fff;
 }
 
 #root {

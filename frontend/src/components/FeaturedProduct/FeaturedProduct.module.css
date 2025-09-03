@@ -4,6 +4,7 @@
   max-width: 300px;
   text-align: center;
   transition:  0.6, 'ease Out';
+  height: -webkit-fill-available;
 }
 
 .productImage {

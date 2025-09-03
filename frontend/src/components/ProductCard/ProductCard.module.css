@@ -1,41 +1,64 @@
-
 .productCard {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
+  justify-content: space-between;
+  gap: 0.3rem;
   background: #fff;
-  padding: 0.5rem;
+  padding: 0.4rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  height: fit-content;
+  width: 38%;
+  height: 45%;
+}
+
+.productImageContainer {
+  width: 100%;
+  height: 10rem; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .productImage {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 6px;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain; 
 }
 
 .productInfo {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  flex-grow: 1;
+  gap: 5px;
+  text-align: center;
 }
 
 .productName {
   font-weight: bold;
   margin: 0;
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .productPrice {
   color: #777;
   margin: 0;
+  font-size: 0.8rem;
 }
 
 .addIcon {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+  width: 1.4em;
+  height: 1.4em;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: absolute;
+  right: 0.2rem;
+  bottom: 0.2rem;
 }
