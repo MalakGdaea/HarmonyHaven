@@ -16,7 +16,7 @@ function NavBar() {
             <div className={styles.cartContainer}>
                 <img onClick={() => setIsCartOpen(!isCartOpen)} className={styles.cart} src={icons.cartIcon} />
                 <div className={styles.quantity}>{order.items.length}</div>
-                {isCartOpen && <div className={styles.cartSummary}><CartSummary /></div>}
+                {isCartOpen && <div className={styles.cartSummary}><CartSummary setIsCartOpen={setIsCartOpen} /></div>}
             </div>
         </nav>
     );

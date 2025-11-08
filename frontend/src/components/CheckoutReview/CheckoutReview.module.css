@@ -1,0 +1,71 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 4px solid var(--ring);
+}
+
+.summaryContainer {
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.section .title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--ring);
+    padding-bottom: 4px;
+}
+
+.section .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.section p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.section hr {
+    border: none;
+    border-top: 2px solid var(--ring);
+    margin: 1rem 0;
+}
+
+.item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.totalSection {
+    background-color: var(--light-gray);
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 2;
+}
+
+.image {
+    width: 100px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.total {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--fg);
+}
+
+.orderItems {
+    width: 45%;
+}

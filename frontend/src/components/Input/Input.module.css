@@ -1,0 +1,33 @@
+.inputContainer {
+  position: relative;
+  margin: 16px 0;
+}
+
+.input {
+  width: 96%;
+  padding: 12px 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.label {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 16px;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.inputContainer.focused .label {
+  top: -8px;
+  left: 8px;
+  font-size: 12px;
+  color: #000;
+  background: #fff;
+  padding: 0 4px;
+}

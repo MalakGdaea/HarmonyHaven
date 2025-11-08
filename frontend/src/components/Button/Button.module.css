@@ -1,0 +1,31 @@
+.container {
+  padding-top: 4px;
+  margin-top: 4px;
+}
+
+.container > button {
+  width: 100%;
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 30px;
+  cursor: pointer;
+  transition: transform .06s ease, box-shadow .2s ease, background .15s ease;
+  box-shadow: 0 4px 14px var(--ring);
+}
+
+.container > button:hover {
+  background: var(--primary-hover);
+}
+
+.container > button:active {
+  transform: translateY(1px);
+}
+
+/* If you have secondary buttons inside container, add .secondary */
+.secondary {
+  background: transparent !important;
+  color: var(--fg) !important;
+}

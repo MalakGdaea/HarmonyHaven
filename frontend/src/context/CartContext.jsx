@@ -8,6 +8,13 @@ export const CartProvider = ({ children }) => {
         total: 0,
     });
 
+    const cartReset = () => {
+        setOrder({
+            items: [],
+            total: 0,
+        });
+    }
+
     const addItem = (newItem) => {
         setOrder((prevOrder) => {
             const existingItem = prevOrder.items.find(item => item._id === newItem._id);
@@ -74,7 +81,7 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{ order, addItem, removeItem, updateQuantity }}>
+        <CartContext.Provider value={{ order, addItem, removeItem, updateQuantity, cartReset }}>
             {children}
         </CartContext.Provider>
     );

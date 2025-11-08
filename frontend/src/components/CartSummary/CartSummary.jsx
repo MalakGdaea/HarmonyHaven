@@ -3,14 +3,25 @@ import { useCart } from '../../context/CartContext';
 import CartItem from './CartItem';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function CartSummary() {
+function CartSummary({ setIsCartOpen }) {
     const { order } = useCart();
+    const navigate = useNavigate();
+
     const [isButtonDisabled, setIsButtonDisabled] = useState(order.items.length === 0);
 
     useEffect(() => {
         setIsButtonDisabled(order.items.length === 0);
     }, [order.items.length]);
+
+    const handleCheckout = () => {
+        if (!isButtonDisabled) {
+            setIsCartOpen(false);     // Close the cart
+            navigate('/checkout');    // Navigate to checkout
+        }
+    };
+
 
     return (
         <div className={styles.cartContainer}>
@@ -29,9 +40,12 @@ function CartSummary() {
                     </div>
                 </div>)
             }
-            <Link to='/checkout'>
-                <div className={`${styles.checkoutButton} ${isButtonDisabled ? styles.disabled : {}}`}>Proceed to Checkout</div>
-            </Link>
+            <div
+                className={`${styles.checkoutButton} ${isButtonDisabled ? styles.disabled : ''}`}
+                onClick={handleCheckout}
+            >
+                Proceed to Checkout
+            </div>
         </div>
     );
 }

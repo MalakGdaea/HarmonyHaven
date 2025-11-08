@@ -1,0 +1,9 @@
+.footerContainer {
+    margin: 10%;
+    padding: 2%;
+    background-color: var(--light-gray);
+}
+
+.rights {
+    background-color: var(--bg);
+}

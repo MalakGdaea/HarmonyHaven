@@ -9,9 +9,8 @@
 }
 
 .cartList {
-    width: fit-content;
     padding: 0%;
-    padding: 0 1rem;
+    padding: 0 0.2rem;
 }
 
 .total {

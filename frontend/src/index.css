@@ -2,7 +2,6 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
 
@@ -11,6 +10,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+  
+  --fg: #0f172a;                
+  --muted: #59626e;             
+  --border: #e2e8f0;            
+  --bg: #ffffff;                
+  --error: #b00020;
+  --primary: #e67e22;           
+  --primary-hover: #b45e13;     
+  --ring: rgba(106, 106, 110, 0.15);
+  --light-gray: #f3f3f3;
 }
 
 
