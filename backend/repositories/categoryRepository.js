@@ -9,3 +9,11 @@ export async function getAllCategories() {
     }
 }
 
+export async function getCategoryById(categoryId) {
+    try {
+        return await Category.findById(categoryId);
+    } catch (error) {
+        console.error('Error fetching category by ID:', error);
+        throw error;
+    }
+}

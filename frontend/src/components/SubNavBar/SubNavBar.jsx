@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { appear } from '../../motions';
 
-function SubNavBar() {
+function SubNavBar({ categories }) {
     return (
         <nav className={styles.subNavBar}>
             <motion.ul
@@ -12,12 +12,16 @@ function SubNavBar() {
                 variants={appear}
                 transition={{ duration: 0.5, delay: 2 }}
                 className={styles.navList}>
-                <li><NavLink className={styles.link} >Pianos</NavLink></li>
-                <li><NavLink className={styles.link} >Guitars</NavLink></li>
-                <li><NavLink className={styles.link} >Drums</NavLink></li>
-                <li><NavLink className={styles.link} >Keyboards</NavLink></li>
-                <li><NavLink className={styles.link}>Saxophones</NavLink></li>
-                <li><NavLink className={styles.link} >Trumpets</NavLink></li>
+                {categories && categories.map((category) => (
+                    <li key={category._id}>
+                        <NavLink
+                            to={`/${category._id}`}
+                            className={styles.link}
+                        >
+                            {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
+                        </NavLink>
+                    </li>
+                ))}
             </motion.ul>
         </nav>
     );

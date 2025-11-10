@@ -7,3 +7,11 @@ export async function getAllCategories() {
         throw error;
     }
 }
+
+export async function getCategoryById(categoryId) {
+    try {
+        return await categoryRepo.getCategoryById(categoryId);
+    } catch (error) {
+        throw error;
+    }
+}

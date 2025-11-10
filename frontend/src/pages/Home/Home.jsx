@@ -5,31 +5,15 @@ import { featuredProducts } from '../../mockdata.js';
 import ProductsList from '../../components/ProductsList/ProductsList.jsx';
 import SubNavBar from '../../components/SubNavBar/SubNavBar.jsx';
 import Category from '../../components/Category/Category.jsx';
-import { fetchCategories } from '../../api/categoryApi';
-import React, { useEffect } from 'react';
+import { useCategories } from '../../context/CategoriesContext.jsx';
 
 function Home() {
-    const [categories, setCategories] = React.useState(null);
-    const [isLoading, setIsLoading] = React.useState(true);
-
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await fetchCategories();
-                setCategories(response);
-            } catch (error) {
-                console.error('Failed to fetch categories:', error);
-            } finally {
-                setIsLoading(false);
-            }
-        }
-        fetchData();
-    }, []);
+    const { categories } = useCategories();
 
     return (
         <div className={styles.homeContainer}>
             <header className={styles.landingHeader}>
-                <SubNavBar />
+                <SubNavBar categories={categories} />
                 <div className={styles.overlay}></div>
                 <img src={images.landingImage} className={styles.landingImage} alt="Harmony House" />
                 <div className={styles.introContainer}>
@@ -45,13 +29,9 @@ function Home() {
                     <ProductsList products={featuredProducts} />
                 </section>
                 <section>
-                    {isLoading ? (
-                        <p>Loading products...</p>
-                    ) : categories && categories.length > 0 ? (
-                        categories.map(category => <Category key={category._id} category={category} />)
-                    ) : (
-                        <p>No Categories Available.</p>
-                    )}
+                    {
+                        categories && categories.map(category => <Category key={category._id} category={category} />)
+                    }
                 </section>
             </main>
         </div>

@@ -10,6 +10,9 @@ export async function fetchProductById(productId) {
     return get(`${endpoint}/${productId}`);
 }
 
-export async function getProductsByCategory(categoryId, limit = 6) {
+export async function getProductsByCategory(categoryId, limit) {
+    if (limit === undefined) {
+        return get(`${endpoint}?categoryId=${categoryId}`);
+    }
     return get(`${endpoint}?categoryId=${categoryId}&limit=${limit}`);
 }

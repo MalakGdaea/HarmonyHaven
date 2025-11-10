@@ -15,7 +15,6 @@ function ProductCard({ product }) {
                 <img src={icons.add} alt="Add to cart" className={styles.addIcon} onClick={() => addItem(product)} />
             </div>
         </div>
-
     );
 }
 

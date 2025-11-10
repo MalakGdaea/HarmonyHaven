@@ -7,9 +7,9 @@
     position: relative;
 }
 
-.currency{
-    color: #ffffff;
-    font-size: 0.8rem;
+.audioIcon {
+    width: 25px;
+    height: 25px;
 }
 
 .logo {

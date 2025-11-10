@@ -7,11 +7,23 @@ import customer from "./icons/customer.png";
 import address from "./icons/address.png";
 import payment from "./icons/payment.png";
 import review from "./icons/review.png";
-
+import x from "./icons/x.png";
+import insta from "./icons/insta.png";
+import face from "./icons/face.png";
+import location from "./icons/location.png";
+import phone from "./icons/phone.png";
+import email from "./icons/mail.png";
+import audio from "./icons/audio.png";
+import mute from "./icons/mute.png";
 
 
 
 export const icons = {
+    audio,
+    mute,
+    location,
+    phone,
+    email,
     cartIcon,
     arrow,
     logo,
@@ -20,6 +32,9 @@ export const icons = {
     address,
     payment,
     review,
+    x,
+    insta,
+    face,
 }
 
 export const images = {

@@ -11,7 +11,7 @@
   -moz-osx-font-smoothing: grayscale;
   font-size: clamp(0.875rem, 1.5vw, 1.25rem);
   
-  --fg: #0f172a;                
+  --fg: #000000;                
   --muted: #59626e;             
   --border: #e2e8f0;            
   --bg: #ffffff;                
