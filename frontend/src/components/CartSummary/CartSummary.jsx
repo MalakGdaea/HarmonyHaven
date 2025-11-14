@@ -2,7 +2,6 @@ import styles from './CartSummary.module.css';
 import { useCart } from '../../context/CartContext';
 import CartItem from './CartItem';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 function CartSummary({ setIsCartOpen }) {
@@ -17,11 +16,10 @@ function CartSummary({ setIsCartOpen }) {
 
     const handleCheckout = () => {
         if (!isButtonDisabled) {
-            setIsCartOpen(false);     // Close the cart
-            navigate('/checkout');    // Navigate to checkout
+            setIsCartOpen(false);
+            navigate('/checkout');
         }
     };
-
 
     return (
         <div className={styles.cartContainer}>

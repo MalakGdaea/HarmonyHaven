@@ -15,13 +15,20 @@ export const CartProvider = ({ children }) => {
         });
     }
 
+    const isSameVariant = (itemA, itemB) => {
+        return itemA._id === itemB._id &&
+            itemA.selectedVariant?._id === itemB.selectedVariant?._id;
+    }
+
     const addItem = (newItem) => {
         setOrder((prevOrder) => {
-            const existingItem = prevOrder.items.find(item => item._id === newItem._id);
+            const existingItem = prevOrder.items.find(item => item._id === newItem._id
+                && item.selectedVariant?._id === newItem.selectedVariant?._id
+            );
             let updatedItems;
             if (existingItem) {
                 updatedItems = prevOrder.items.map(item =>
-                    item._id === newItem._id
+                    item._id === newItem._id && isSameVariant(item, newItem)
                         ? { ...item, quantity: item.quantity + 1 }
                         : item
                 );
@@ -38,13 +45,18 @@ export const CartProvider = ({ children }) => {
         });
     };
 
-    const removeItem = (id) => {
+    const removeItem = (itemToRemove) => {
         setOrder((prevOrder) => {
-            const itemToRemove = prevOrder.items.find(item => item._id === id);
-            if (!itemToRemove) return prevOrder;
+            const item = prevOrder.items.find(i =>
+                i._id === itemToRemove._id && isSameVariant(i, itemToRemove)
+            );
+            if (!item) return prevOrder;
 
-            let updatedItems = prevOrder.items.filter(item => item._id !== id);
-            const updatedTotal = prevOrder.total - itemToRemove.price * itemToRemove.quantity;
+            const updatedItems = prevOrder.items.filter(i =>
+                !(i._id === itemToRemove._id && isSameVariant(i, itemToRemove))
+            );
+
+            const updatedTotal = prevOrder.total - item.price * item.quantity;
 
             return {
                 items: updatedItems,
@@ -53,20 +65,26 @@ export const CartProvider = ({ children }) => {
         });
     };
 
-    const updateQuantity = (id, change) => {
+    const updateQuantity = (itemToUpdate, change) => {
         setOrder((prevOrder) => {
-            const item = prevOrder.items.find(item => item._id === id);
+            const item = prevOrder.items.find(i =>
+                i._id === itemToUpdate._id && isSameVariant(i, itemToUpdate)
+            );
             if (!item) return prevOrder;
 
             const newQuantity = item.quantity + change;
 
             let updatedItems;
             if (newQuantity <= 0) {
-                // If quantity is 0 or less, remove item completely
-                updatedItems = prevOrder.items.filter(i => i._id !== id);
+                // Remove item if quantity drops to 0 or below
+                updatedItems = prevOrder.items.filter(i =>
+                    !(i._id === itemToUpdate._id && isSameVariant(i, itemToUpdate))
+                );
             } else {
                 updatedItems = prevOrder.items.map(i =>
-                    i._id === id ? { ...i, quantity: newQuantity } : i
+                    i._id === itemToUpdate._id && isSameVariant(i, itemToUpdate)
+                        ? { ...i, quantity: newQuantity }
+                        : i
                 );
             }
 
@@ -78,7 +96,6 @@ export const CartProvider = ({ children }) => {
             };
         });
     };
-
 
     return (
         <CartContext.Provider value={{ order, addItem, removeItem, updateQuantity, cartReset }}>

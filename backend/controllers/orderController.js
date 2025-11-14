@@ -1,10 +1,24 @@
 import * as orderService from '../services/orderService.js';
+import { sendOrderEmail } from '../utils/emailSender.js';
 
 export async function createOrder(req, res) {
     try {
         const orderData = req.body;
         const newOrder = await orderService.createOrder(orderData);
-        res.status(201).json(newOrder);
+        try {
+            await sendOrderEmail({
+                to: newOrder.customer.email,
+                orderNumber: newOrder.orderNumber,
+                items: orderData.items,
+                customerName: newOrder.customer.name,
+                total: orderData.totalAmount,
+                deliveryType: orderData.deliveryType
+            });
+            res.json({ success: true, message: "Order confirmed and email sent!" });
+        } catch (error) {
+            console.error("Email error:", error);
+            res.status(500).json({ error: "Failed to send email" });
+        }
     } catch (error) {
         const status = error.statusCode || 500;
         res.status(status).json({ message: error.message || 'Internal Server Error' });

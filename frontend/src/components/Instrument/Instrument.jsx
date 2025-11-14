@@ -5,16 +5,24 @@ import { useState } from 'react';
 
 export default function Instrument({ item }) {
     const { addItem } = useCart();
-    const [imageUrl, setImageUrl] = useState(item.imageUrl);
+    const [selectedVariant, setSelectedVariant] = useState(null);
+
+    const updateVariant = (variant) => {
+        setSelectedVariant(variant);
+    }
 
     const addToCart = () => {
-        addItem(item);
+        const itemToAdd = { ...item };
+        if (selectedVariant) {
+            itemToAdd.selectedVariant = selectedVariant;
+        }
+        addItem(itemToAdd);
     }
 
     return (
         <div className={styles.instrumentCard}>
             <div className={styles.imageWrapper}>
-                <img src={imageUrl ?? item.imageUrl} alt={item.name} />
+                <img src={selectedVariant?.imageUrl ?? item.imageUrl} alt={item.name} />
             </div>
             <div className={styles.colorCircleRow}>
                 {item.variants.map((variant) => (
@@ -23,7 +31,7 @@ export default function Instrument({ item }) {
                         className={styles.colorCircle}
                         style={{ backgroundColor: variant.colorCode }}
                         title={`${variant.colorName}`}
-                        onClick={() => setImageUrl(variant.imageUrl)}
+                        onClick={() => updateVariant(variant)}
                     ></div>
                 ))}
             </div>

@@ -10,11 +10,6 @@ function Collection() {
     const { categoryId } = useParams();
     const { products, setProducts } = useProducts();
 
-    console.log(categoryId);
-    console.log(products);
-
-
-
     useEffect(() => {
         const fetchData = async () => {
             if (products[categoryId]) {

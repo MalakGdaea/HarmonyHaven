@@ -20,7 +20,10 @@ function buildOrder(customerData, orderData) {
         },
         items: orderData.items.map(item => ({
             productId: item._id,
-            quantity: item.quantity
+            imageUrl: item.imageUrl,
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price
         })),
         deliveryType: customerData.deliveryType,
         totalAmount,

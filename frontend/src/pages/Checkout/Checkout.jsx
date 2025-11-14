@@ -20,6 +20,7 @@ function Checkout() {
     const fields = [customerFields, addressFields, paymentFields];
     const [customerData, setCustomerData] = useState({});
     const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
+    const [isLaoding, setIsLoading] = useState(false);
 
     const handleFormSubmit = (values) => {
         setCustomerData((data) => ({ ...data, ...values }));
@@ -28,8 +29,10 @@ function Checkout() {
 
     const handleConfirmOrder = () => {
         const orderPayload = buildOrder(customerData, order);
+        console.log(orderPayload);
+        setIsLoading(true);
         setOrder(orderPayload).then((response) => {
-            console.log('Order response:', response);
+            setIsLoading(false)
             setIsOrderConfirmed(true);
         }).catch((error) => {
             console.error('Order error:', error);
@@ -44,6 +47,9 @@ function Checkout() {
 
     return (
         <div className={styles.checkoutPage}>
+            {isLaoding && <div className={styles.loadingOverlay}>
+                <div className={styles.loader}></div>
+            </div>}
             {isOrderConfirmed && <Popup title={"You Place the Order Successfully"}
                 message={"Your order was placed successfully! A confirmation email is on its way. Thanks for shopping with us—enjoy making music with your new instruments!"}
                 buttonTitle={"KEEP BROWSING"} onClose={handleClose} />}
