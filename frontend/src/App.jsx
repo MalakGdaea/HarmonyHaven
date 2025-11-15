@@ -8,11 +8,13 @@ import { CategoriesProvider } from './context/CategoriesContext'
 import Checkout from './pages/Checkout/Checkout'
 import Collection from './pages/Collection/Collection'
 import Footer from './components/Footer/Footer.jsx'
+import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx'
 
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <CartProvider>
         <CategoriesProvider>
           <ProductProvider>

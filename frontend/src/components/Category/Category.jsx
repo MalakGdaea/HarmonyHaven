@@ -3,6 +3,7 @@ import Title from '../Title/Title';
 import ProductCard from '../ProductCard/ProductCard';
 import React, { useEffect } from 'react';
 import { getProductsByCategory } from '../../api/productApi';
+import { Link } from 'react-router-dom';
 
 function Category({ category }) {
     const [products, setProducts] = React.useState(null);
@@ -28,8 +29,11 @@ function Category({ category }) {
             <Title text={category.name}></Title>
             <div className={styles.contentWrapper}>
                 <div className={styles.imageWrapper}>
-                    <img src={category.imageUrl} alt={category.name} className={styles.categoryImage} /> {/* make the image dinamic */}
-                    <p className={styles.description}>{category.description}</p>
+                    <img src={category.imageUrl} alt={category.name} className={styles.categoryImage} />
+                    <div className={styles.moreInfo}>
+                        <p className={styles.description}>{category.description}</p>
+                        <Link to={`/${category._id}`} className={styles.more}>see more</Link>
+                    </div>
                 </div>
                 <div className={styles.productsWrapper}>
                     {isLoading ? (

@@ -33,14 +33,6 @@
   justify-content: space-around;
 }
 
-.description {
-  font-size: 1rem;
-  color: #f8f8f8;
-  position: absolute;
-  bottom: 2px;
-  left: 10px;
-}
-
 .button {
   align-self: start;
   background-color: #333;
@@ -53,4 +45,26 @@
 
 .button:hover {
   background-color: #555;
+}
+
+.moreInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: #f8f8f8;
+  position: absolute;
+  bottom: 2px;
+  left: 10px;
+  width: 95%;
+}
+
+.more {
+  cursor: pointer;
+}
+
+.more::after {
+  content: " ❯❯";
+  font-weight: bold;
+  font-size: 0.9rem;
 }

@@ -1,9 +1,8 @@
 import styles from './Home.module.css';
-import { images } from '../../assets/';
+import { videos } from '../../assets/';
 import Title from '../../components/Title/Title.jsx';
 import { featuredProducts } from '../../mockdata.js';
 import ProductsList from '../../components/ProductsList/ProductsList.jsx';
-import SubNavBar from '../../components/SubNavBar/SubNavBar.jsx';
 import Category from '../../components/Category/Category.jsx';
 import { useCategories } from '../../context/CategoriesContext.jsx';
 
@@ -13,9 +12,15 @@ function Home() {
     return (
         <div className={styles.homeContainer}>
             <header className={styles.landingHeader}>
-                <SubNavBar categories={categories} />
                 <div className={styles.overlay}></div>
-                <img src={images.landingImage} className={styles.landingImage} alt="Harmony House" />
+                <video
+                    src={videos.landingVid}
+                    className={styles.landingImage}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                />
                 <div className={styles.introContainer}>
                     <div className={styles.introText}>
                         <h2>Welcome to Harmony Haven</h2>
