@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from 'react';
 import CartSummary from '../CartSummary/CartSummary';
 import { useCategories } from '../../context/CategoriesContext';
 import SubNavBar from '../SubNavBar/SubNavBar.jsx';
+import { useAudio } from '../../context/AudioContext.jsx';
 
 
 function NavBar() {
@@ -13,6 +14,8 @@ function NavBar() {
     const { categories } = useCategories();
     const [isCartOpen, setIsCartOpen] = useState(false);
     const cartRef = useRef(null)
+    const { isPlaying, toggleAudio } = useAudio();
+    const [showPopup, setShowPopup] = useState(true);
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -30,10 +33,22 @@ function NavBar() {
         };
     }, [isCartOpen]);
 
+    const handleAudioClick = () => {
+        toggleAudio();
+        setShowPopup(false); // hide popup forever after first click
+    };
+
     return (
         <div className={styles.navBarContainer}>
             <nav className={styles.navContainer}>
-                <img className={styles.audioIcon} src={icons.audio} />
+                <div className={styles.audioWrapper}>
+                    <img className={styles.audioIcon} src={isPlaying ? icons.audio : icons.mute} onClick={handleAudioClick} />
+                    {showPopup && (
+                        <div className={styles.audioPopup}>
+                            Click to start listening to music while browsing 🎵
+                        </div>
+                    )}
+                </div>
                 <Link to='/'><img className={styles.logo} src={icons.logo} /></Link>
                 <div className={styles.cartContainer} ref={cartRef}>
                     <img onClick={() => setIsCartOpen(!isCartOpen)} className={styles.cart} src={icons.cartIcon} />

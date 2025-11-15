@@ -2,13 +2,24 @@ import styles from './Collection.module.css';
 import { useParams } from 'react-router-dom';
 import { getProductsByCategory } from '../../api/productApi';
 import Instrument from '../../components/Instrument/Instrument.jsx';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useProducts } from '../../context/ProductsContext.jsx';
+import { useAudio } from '../../context/AudioContext.jsx';
+import { useCategories } from '../../context/CategoriesContext.jsx';
 
 
 function Collection() {
     const { categoryId } = useParams();
     const { products, setProducts } = useProducts();
+    const { switchInstrument } = useAudio();
+    const { categories } = useCategories();
+
+    useEffect(() => {
+        const category = categories.find(cat => cat._id === categoryId);
+        if (category) {
+            switchInstrument(category.name.toLowerCase());
+        }
+    }, [categoryId]);
 
     useEffect(() => {
         const fetchData = async () => {

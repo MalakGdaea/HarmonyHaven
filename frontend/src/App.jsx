@@ -9,6 +9,7 @@ import Checkout from './pages/Checkout/Checkout'
 import Collection from './pages/Collection/Collection'
 import Footer from './components/Footer/Footer.jsx'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx'
+import { AudioProvider } from './context/AudioContext.jsx'
 
 
 function App() {
@@ -18,13 +19,15 @@ function App() {
       <CartProvider>
         <CategoriesProvider>
           <ProductProvider>
-            <NavBar />
-            <Routes>
-              <Route path="/" Component={Home} />
-              <Route path="/:categoryId" element={<Collection />} />
-              <Route path="/checkout" element={<Checkout />} />
-            </Routes>
-            <Footer />
+            <AudioProvider>
+              <NavBar />
+              <Routes>
+                <Route path="/" Component={Home} />
+                <Route path="/:categoryId" element={<Collection />} />
+                <Route path="/checkout" element={<Checkout />} />
+              </Routes>
+              <Footer />
+            </AudioProvider>
           </ProductProvider>
         </CategoriesProvider>
       </CartProvider>
