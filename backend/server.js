@@ -12,7 +12,7 @@ import orderRoutes from './routes/orderRoutes.js';
 
 const allowedOrigins = [
     `http://localhost:5173`,
-    "https://harmony-haven-hc4tp5kst-malakgdaeas-projects.vercel.app/"
+    "https://harmony-haven-hc4tp5kst-malakgdaeas-projects.vercel.app"
 ];
 
 const app = express();
