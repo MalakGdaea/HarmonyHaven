@@ -15,7 +15,7 @@ import phone from "./icons/phone.png";
 import email from "./icons/mail.png";
 import audio from "./icons/audio.png";
 import mute from "./icons/mute.png";
-import landingVid from "./videos/landing.mp4";
+
 
 
 
@@ -40,8 +40,4 @@ export const icons = {
 
 export const images = {
     landingImage,
-}
-
-export const videos = {
-    landingVid,
 }

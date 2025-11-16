@@ -1,5 +1,4 @@
 import styles from './Home.module.css';
-import { videos } from '../../assets/';
 import Title from '../../components/Title/Title.jsx';
 import { featuredProducts } from '../../mockdata.js';
 import ProductsList from '../../components/ProductsList/ProductsList.jsx';
@@ -14,7 +13,7 @@ function Home() {
             <header className={styles.landingHeader}>
                 <div className={styles.overlay}></div>
                 <video
-                    src={videos.landingVid}
+                    src={'/landing.mp4'}
                     className={styles.landingImage}
                     autoPlay
                     loop
