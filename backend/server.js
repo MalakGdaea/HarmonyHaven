@@ -9,15 +9,29 @@ import productRoutes from './routes/productRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 
-const app = express();
-app.use(express.json());
-app.use(cors());
 
-const PORT = process.env.PORT || 5000;
+const allowedOrigins = [
+    `http://localhost:5173`,
+    "https://harmony-haven-blush.vercel.app"
+];
+
+const app = express();
+
+
+app.use(
+    cors({
+        origin: allowedOrigins,
+        credentials: true,
+    })
+);
+
+app.use(express.json());
 
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/orders', orderRoutes);
+
+const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
