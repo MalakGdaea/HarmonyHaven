@@ -28,6 +28,10 @@ app.use(
 
 app.use(express.json());
 
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+});
+
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/orders', orderRoutes);
