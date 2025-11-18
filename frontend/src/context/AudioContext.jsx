@@ -23,15 +23,23 @@ export function AudioProvider({ children }) {
             a.preload = "auto";
             a.loop = true;
             a.volume = 0;
+            a.muted = true;
         });
     }, []);
 
     const startAudio = async () => {
         try {
+            Object.values(tracks.current).forEach(a => {
+                a.muted = true; // Use muted instead of volume for mobile
+                a.volume = 0;
+            });
+            // Play all tracks to keep them synchronized
             await Promise.all(
                 Object.values(tracks.current).map(a => a.play().catch(() => { }))
             );
-            tracks.current[current].volume = 1;
+            const currentTrack = tracks.current[current];
+            currentTrack.muted = false;
+            currentTrack.volume = 1;
             setIsPlaying(true);
         } catch (err) {
             console.error("Audio unlock failed: ", err);
@@ -43,6 +51,7 @@ export function AudioProvider({ children }) {
             a.pause();
             a.currentTime = 0;
             a.volume = 0;
+            a.muted = true;
         });
         setIsPlaying(false);
     };
@@ -57,7 +66,8 @@ export function AudioProvider({ children }) {
 
         const fadeOut = tracks.current[current];
         const fadeIn = tracks.current[instrument];
-
+        // Unmute the new track
+        fadeIn.muted = false;
         setCurrent(instrument);
 
         let duration = 400;
@@ -67,7 +77,11 @@ export function AudioProvider({ children }) {
         let interval = setInterval(() => {
             fadeOut.volume = Math.max(0, fadeOut.volume - (1 / steps));
             fadeIn.volume = Math.min(1, fadeIn.volume + (1 / steps));
-            if (fadeIn.volume === 1) clearInterval(interval);
+            if (fadeIn.volume === 1) {
+                clearInterval(interval);
+                // Mute the old track (keeps it playing but silent)
+                fadeOut.muted = true;
+            }
         }, stepTime);
     };
 
