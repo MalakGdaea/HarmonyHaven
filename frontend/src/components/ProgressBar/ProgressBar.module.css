@@ -1,15 +1,15 @@
 
 .progressBarContainer {
-  position: relative;
   padding: 2rem 0;          
   margin-bottom: 2rem;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
 }
 
 .progressBarTrack {
-  width:75%;
   position: absolute;
-  left: 12%;
-  right: 0;
+  width:100%;
   top: 45%;
   height: 8px;
   background: #e5e7eb;        
@@ -33,7 +33,7 @@
 
 
 .steps {
-  width: 80%;
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: space-between;
