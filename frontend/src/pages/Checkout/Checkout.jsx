@@ -35,6 +35,7 @@ function Checkout() {
             setIsLoading(false)
             setIsOrderConfirmed(true);
         }).catch((error) => {
+            setIsLoading(false)
             console.error('Order error:', error);
             alert('There was an error placing your order. Please try again.');
         });

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 220px;
+    width: fit-content;
     padding: 16px;
     margin: 16px;
     background-color: #fff;
@@ -89,13 +89,17 @@
 
 @media (max-width: 600px) {
     .instrumentCard {
-        width: 45%;
-        margin: 8px;
-        padding: 12px;
+        margin: 0;
+        padding: 0.4rem;
+    }
+
+    .imageWrapper {
+        max-height: 10rem;
     }
 
     .instrumentCard img {
-        height: 120px;
+        max-height: 100%;
+        width: auto;
     }
 }
 

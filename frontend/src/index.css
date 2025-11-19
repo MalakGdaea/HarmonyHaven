@@ -40,3 +40,9 @@ html, body {
 .secondaryText {
   color: rgba(255, 255, 255, 0.7);
 }
+
+@media (max-width: 600px) {
+    :root {
+        font-size: 14px; /* smaller base size for mobile */
+    }
+}

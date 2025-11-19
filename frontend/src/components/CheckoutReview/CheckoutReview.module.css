@@ -69,3 +69,21 @@
 .orderItems {
     width: 45%;
 }
+
+@media (max-width: 900px) {
+    .summaryContainer {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .orderItems {
+        width: 100%;
+    }
+
+    .section .title {
+        font-size: 1rem;
+    }
+    .section p {
+        font-size: 1rem;
+    }
+}

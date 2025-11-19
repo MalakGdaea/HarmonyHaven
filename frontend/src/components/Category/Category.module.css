@@ -68,3 +68,30 @@
   font-weight: bold;
   font-size: 0.9rem;
 }
+
+@media (max-width: 900px) {
+  .contentWrapper {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .imageWrapper, .productsWrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .productsWrapper {
+    justify-content: space-around;
+  }
+
+  .more::after {
+    font-size: 0.8rem;
+  }
+  .moreInfo {
+    font-size: 0.9rem;
+    width: 95%;
+  }
+  .moreInfo .description {
+    width: 80%;
+  }
+}

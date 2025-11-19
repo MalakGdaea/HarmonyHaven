@@ -1,22 +1,22 @@
 .subNavBar {
-    padding: 0.01rem;
     background-color: rgba(0, 0, 0);
     position: absolute;
     z-index: 4;
-    width: 100%;
     overflow: hidden;
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 2.5rem;
-    opacity: 0.8;
+    opacity: 0.7;
+    padding: 0.5rem 1rem;
+    width: -webkit-fill-available;
 }
 
 .subNavBar .navList {
     display: flex;
-    gap:50px;
+    column-gap: 50px;
+    row-gap: 15px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .subNavBar li {
@@ -27,4 +27,10 @@
     color: white;
     text-decoration: none;
     font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .subNavBar {
+    width: auto;
+  }
 }

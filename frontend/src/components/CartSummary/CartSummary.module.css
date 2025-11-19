@@ -60,3 +60,21 @@
 a {
     text-decoration: none;
 }
+
+/* @media (max-width: 600px) {
+    .total {
+        font-size: 0.7rem;
+        margin-top: 1rem;
+        padding: 0.8rem;
+    }
+
+    .checkoutButton {
+        padding: 0.6rem;
+        font-size: 0.7rem;
+    }
+
+    .cartContainer .title {
+        font-size: 0.7rem;
+        margin-top: 0.3rem;
+    }
+} */

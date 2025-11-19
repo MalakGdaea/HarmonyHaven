@@ -10,3 +10,12 @@
     text-align: center;
     margin: 20px 0;
 }
+
+/* Small screens: make items smaller */
+@media (max-width: 900px) {
+    .instrumentsGrid {
+        margin-top: 5rem;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+}
