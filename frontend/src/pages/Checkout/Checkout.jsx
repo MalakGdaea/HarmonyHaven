@@ -30,6 +30,7 @@ function Checkout() {
     const handleConfirmOrder = () => {
         const orderPayload = buildOrder(customerData, order);
         console.log(orderPayload);
+
         setIsLoading(true);
         setOrder(orderPayload).then((response) => {
             setIsLoading(false)

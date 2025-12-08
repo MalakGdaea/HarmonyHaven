@@ -47,7 +47,7 @@ export default function CheckoutReview({ customerData, onConfirm }) {
                 <div className={styles.orderItems}>
                     <section className={styles.section}>
                         {order.items.map(item => (
-                            <CartItem key={item.id} item={item} />
+                            <CartItem key={item._id} item={item} />
                         ))}
                     </section>
 

@@ -29,7 +29,7 @@ function CartSummary({ setIsCartOpen }) {
                 <div className={styles.cartSummary} >
                     <ul className={styles.cartList}>
                         {order.items.map(item => (
-                            <CartItem key={item.id} item={item} />
+                            <CartItem key={item._id} item={item} />
                         ))}
                     </ul>
                     <div className={styles.total}>

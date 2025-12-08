@@ -27,7 +27,7 @@ export default function Instrument({ item }) {
             <div className={styles.colorCircleRow}>
                 {item.variants.map((variant) => (
                     <div
-                        key={variant.id}
+                        key={variant._id}
                         className={styles.colorCircle}
                         style={{ backgroundColor: variant.colorCode }}
                         title={`${variant.colorName}`}
