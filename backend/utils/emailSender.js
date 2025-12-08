@@ -1,10 +1,11 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import sanitizeHtml from 'sanitize-html';
 
 dotenv.config();
 
 
-export async function sendOrderEmail({ to, orderNumber, items, customerName, total, deliveryType }) {
+export async function sendOrderEmail(order) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -13,8 +14,14 @@ export async function sendOrderEmail({ to, orderNumber, items, customerName, tot
     },
   });
 
+  const safeCustomerName = sanitizeHtml(order.customer.name);
+  const safeOrderNumber = sanitizeHtml(order.orderNumber);
+  const safeTotal = sanitizeHtml(String(order.total));
+  const safeDeliveryType = sanitizeHtml(order.deliveryType);
+  const safeTo = sanitizeHtml(order.customer.email);
+
   // Build items HTML
-  const itemsHtml = items.map(item => `
+  const itemsHtml = order.items.map(item => `
     <div style="display: flex; align-items: center; margin-bottom: 20px; font-family: Arial, sans-serif;">
       <div style="height: 100px; width="100px"; margin-right: 15px;">
         <img src="${item.imageUrl}"
@@ -31,10 +38,10 @@ export async function sendOrderEmail({ to, orderNumber, items, customerName, tot
   const htmlContent = `
     <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
       <h2 style="color: #111;">It’s ordered!</h2>
-      <p>Hi ${customerName}, your order has been received.</p>
+      <p>Hi ${safeCustomerName}, your order has been received.</p>
 
       <div style="margin: 20px 0;">
-        <p><strong>Order No. :</strong> ${orderNumber}</p>
+        <p><strong>Order No. :</strong> ${safeOrderNumber}</p>
         <p><strong>Order Date:</strong> ${new Date().toLocaleDateString()}</p>
       </div>
 
@@ -42,8 +49,8 @@ export async function sendOrderEmail({ to, orderNumber, items, customerName, tot
       ${itemsHtml}
 
       <div style="margin-top: 30px;">
-        <p><strong>Total:</strong> $${total}</p>
-        <p><strong>Delivery Type:</strong> ${deliveryType}</p>
+        <p><strong>Total:</strong> $${safeTotal}</p>
+        <p><strong>Delivery Type:</strong> ${safeDeliveryType}</p>
       </div>
 
       <p style="margin-top: 40px;">Thank you for shopping with us!</p>
@@ -52,8 +59,8 @@ export async function sendOrderEmail({ to, orderNumber, items, customerName, tot
 
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
-    to,
-    subject: `Order Confirmation #${orderNumber}`,
+    to: safeTo,
+    subject: `Order Confirmation #${safeOrderNumber}`,
     html: htmlContent,
   });
 }

@@ -6,14 +6,7 @@ export async function createOrder(req, res) {
         const orderData = req.body;
         const newOrder = await orderService.createOrder(orderData);
         try {
-            await sendOrderEmail({
-                to: newOrder.customer.email,
-                orderNumber: newOrder.orderNumber,
-                items: orderData.items,
-                customerName: newOrder.customer.name,
-                total: orderData.totalAmount,
-                deliveryType: orderData.deliveryType
-            });
+            await sendOrderEmail(newOrder);
             res.json({ success: true, message: "Order confirmed and email sent!" });
         } catch (error) {
             console.error("Email error:", error);
@@ -21,6 +14,7 @@ export async function createOrder(req, res) {
         }
     } catch (error) {
         const status = error.statusCode || 500;
+        console.error("Email error:", error);
         res.status(status).json({ message: error.message || 'Internal Server Error' });
     }
 }
