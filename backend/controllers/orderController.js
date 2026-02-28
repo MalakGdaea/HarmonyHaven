@@ -1,5 +1,6 @@
 import * as orderService from '../services/orderService.js';
 import { sendOrderEmail } from '../utils/emailSender.js';
+import mongoose from 'mongoose';
 
 export async function createOrder(req, res) {
     try {
